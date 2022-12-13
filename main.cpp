@@ -45,6 +45,22 @@ int main(int args, char **argv) {
             }
             sm(elementos);
         }
+        else if (std::string(argv[1]) == "--th") {
+            unsigned int threads = std::stoi(std::string(argv[2]));
+            std::vector<int> elementos;
+            for (int i = 3; i < args; i++) {
+                elementos.emplace_back(std::stoi(std::string(argv[i])));
+            }
+            thm(elementos, threads);
+        }
+        else if (std::string(argv[1]) == "--thU") {
+            unsigned int threads = std::stoi(std::string(argv[2]));
+            std::vector<int> elementos;
+            for (int i = 3; i < args; i++) {
+                elementos.emplace_back(std::stoi(std::string(argv[i])));
+            }
+            thUm(elementos, threads);
+        }
     }
     return 0;
 }

@@ -12,13 +12,15 @@
 #include "./testStruct.h"
 
 void help() {
-    std::cout << "[--th]            -> Testeo secuencial contra concurrente con la cantidad maxima de threads [Threads=default, Elementos=default]." << std::endl;
-    std::cout << "[--th] [n]        -> Testeo secuencial contra concurrente con una cantidad n de threads [Elementos=default]." << std::endl;
-    std::cout << "[--th] [n] [m]    -> Testeo secuencial contra concurrente con una cantidad n de threads y una cantidad m de elementos." << std::endl;
+    std::cout << "[--th]                    -> Testeo secuencial contra concurrente con la cantidad maxima de threads [Threads=default, Elementos=default]." << std::endl;
+    std::cout << "[--th] [n]                -> Testeo secuencial contra concurrente con una cantidad n de threads [Elementos=default]." << std::endl;
+    std::cout << "[--th] [n] [m]            -> Testeo secuencial contra concurrente con una cantidad n de threads y una cantidad m de elementos." << std::endl;
+    std::cout << "[--th] [n] [m] [m] ...    -> Testeo secuencial contra concurrente con una cantidad n de threads y m casos de x de elementos." << std::endl;
 
-    std::cout << "[--thU]           -> Testeo concurrente con la cantidad maxima de threads." << std::endl;
-    std::cout << "[--thU] [n]       -> Testeo concurrente con una cantidad n de threads." << std::endl;
-    std::cout << "[--thU] [n] [m]   -> Testeo concurrente con una cantidad n de threads y una cantidad m de elementos." << std::endl;
+    std::cout << "[--thU]                       -> Testeo concurrente con la cantidad maxima de threads." << std::endl;
+    std::cout << "[--thU] [n]                   -> Testeo concurrente con una cantidad n de threads." << std::endl;
+    std::cout << "[--thU] [n] [m]               -> Testeo concurrente con una cantidad n de threads y una cantidad m de elementos." << std::endl;
+    std::cout << "[--thU] [n] [m] [m] [m] ...   -> Testeo concurrente con una cantidad n de threads y una cantidad de m casos de x elementos." << std::endl;
 
     std::cout << "[--s]             -> Testeo secuencial [Elementos=default]." << std::endl;
     std::cout << "[--s] [m]         -> Testeo secuencial con m elementos." << std::endl;
@@ -381,6 +383,24 @@ void sm (const std::vector<int>& elementos) {
         // FinRemove -------------------------------------------------------------------------
         std::cout << "> ---------------------------" << std::endl;
         std::cout << "> Finalizado test unitario: Secuencial" << std::endl;
+        std::cout << "> ###########################################" << std::endl << std::endl;
+    }
+}
+
+void thm (const std::vector<int> &elementos, unsigned int threads) {
+    std::cout << "Cantidad de casos [m]: " << elementos.size() << std::endl;
+    for (int elemento : elementos) {
+        std::cout << "> ###########################################" << std::endl;
+        th(elemento, threads);
+        std::cout << "> ###########################################" << std::endl << std::endl;
+    }
+}
+
+void thUm (const std::vector<int> &elementos, unsigned int threads) {
+    std::cout << "Cantidad de casos [m]: " << elementos.size() << std::endl;
+    for (int elemento : elementos) {
+        std::cout << "> ###########################################" << std::endl;
+        thU(elemento, threads);
         std::cout << "> ###########################################" << std::endl << std::endl;
     }
 }
