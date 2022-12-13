@@ -61,6 +61,12 @@ int main(int args, char **argv) {
             }
             thUm(elementos, threads);
         }
+        else if (std::string(argv[1]) == "--thCsv") {
+            unsigned int threads = std::stoi(std::string(argv[2]));
+            unsigned int elementos = std::stoi(std::string(argv[3]));
+            unsigned int casos = std::stoi(std::string(argv[4]));
+            thCsv(elementos, threads, casos);
+        }
     }
     return 0;
 }
